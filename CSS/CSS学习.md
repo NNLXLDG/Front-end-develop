@@ -511,6 +511,8 @@ background-image:url('gradient2.png');
 }
 ```
 
+![](2025-04-23-00-20-19.png)
+
 如果图像只在水平方向平铺 (repeat-x), 页面背景会更好些:
 ```css
 body
@@ -519,6 +521,7 @@ background-image:url('gradient2.png');
 background-repeat:repeat-x;
 }
 ```
+![](2025-04-23-00-20-42.png)
 
 
 #### 2.3.3 background-repeat
@@ -535,6 +538,11 @@ background-repeat:no-repeat;
 ```
 以上实例中，背景图像与文本显示在同一个位置，为了让页面排版更加合理，不影响文本的阅读，我们可以改变图像的位置。
 
+
+![](2025-04-23-00-19-00.png)
+
+
+#### 2.3.4 background-position
 可以利用 background-position 属性改变图像在背景中的位置:
 ```css
 body
@@ -544,20 +552,43 @@ background-repeat:no-repeat;
 background-position:right top;
 }
 ```
+![](2025-04-23-00-19-35.png)
+
+
+
+#### 2.3.5 background-attachment
+指定一个固定的背景图像
+```css
+body
+{ 
+    background-image:url('smiley.gif');
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+```
+![](2025-04-23-00-27-12.png)
+
+
+#### 简写属性
+在以上实例中我们可以看到页面的背景颜色通过了很多的属性来控制。
+
+为了简化这些属性的代码，我们可以将这些属性合并在同一个属性中.
+
+背景颜色的简写属性为 "background":
+```css
+body {background:#ffffff url('img_tree.png') no-repeat right top;}
+```
+
+当使用简写属性时，属性值的顺序为：
++ background-color
++ background-image
++ background-repeat
++ background-attachment
++ background-position
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+### 2.4 文本格式
 
 
