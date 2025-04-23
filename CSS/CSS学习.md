@@ -603,7 +603,7 @@ body {background:#ffffff url('img_tree.png') no-repeat right top;}
 
 
 一个网页的背景颜色是指在主体内的选择：
-```css
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -632,8 +632,8 @@ p.ex {color:rgb(0,0,255);}
 文本可居中或对齐到左或右,两端对齐.
 
 当text-align设置为"justify"，每一行被展开为宽度相等，左，右外边距是对齐（如杂志和报纸）。
-#### 2.4.3 文本修饰
-```css
+
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -658,9 +658,102 @@ p.main {text-align:justify;}
 ![](2025-04-23-11-24-33.png)
 
 
+#### 2.4.3 文本修饰
+text-decoration 属性用来设置或删除文本的装饰。
+
+从设计的角度看 text-decoration属性主要是用来删除链接的下划线：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+a {text-decoration:none;}
+</style>
+</head>
+
+<body>
+<p>链接到: <a href="https://www.runoob.com/">runoob.com</a></p>
+</body>
+
+</html>
+```
+![](2025-04-23-11-46-13.png)
+
+也可以这样装饰文字：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+h1 {text-decoration:overline;}
+h2 {text-decoration:line-through;}
+h3 {text-decoration:underline;}
+</style>
+</head>
+
+<body>
+<h1>This is heading 1</h1>
+<h2>This is heading 2</h2>
+<h3>This is heading 3</h3>
+</body>
+
+</html>
+```
+![](2025-04-23-11-47-58.png)
+
+我们不建议强调指出不是链接的文本，因为这常常混淆用户。
 #### 2.4.4 文本转换
+文本转换属性是用来指定在一个文本中的大写和小写字母。
+
+可用于所有字句变成大写或小写字母，或每个单词的首字母大写。
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+p.uppercase {text-transform:uppercase;}
+p.lowercase {text-transform:lowercase;}
+p.capitalize {text-transform:capitalize;}
+</style>
+</head>
+
+<body>
+<p class="uppercase">This is some text.</p>
+<p class="lowercase">This is some text.</p>
+<p class="capitalize">This is some text.</p>
+</body>
+</html>
+```
+![](2025-04-23-12-03-02.png)
+
 
 #### 2.4.5 文本缩进
+文本缩进属性是用来指定文本的第一行的缩进。
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+p {text-indent:50px;}
+</style>
+</head>
+<body>
+
+<p>In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since. 'Whenever you feel like criticizing anyone,' he told me, 'just remember that all the people in this world haven't had the advantages that you've had.'</p>
+
+</body>
+</html>
+```
+![](2025-04-23-12-03-59.png)
+
 
 
 ### 2.5 CSS字体
@@ -668,21 +761,233 @@ CSS字体属性定义字体，加粗，大小，文字样式。
 
 
 #### 2.5.1 字型
+在CSS中，有两种类型的字体系列名称：
++ 通用字体系列 - 拥有相似外观的字体系统组合
+    + serif 衬线字体族
+    + sans-serif 无衬线字体族
+    + cursive 手写字体族
+    + fantasy 梦幻字体族
+    + monospace 等宽字体族
++ 特定字体系列 - 一个特定的字体系列（如 "Times" 或 "Courier"）
 
 
-#### 2.5.2 字体系列
 
-#### 2.5.3 字体样式
+#### 2.5.2 字体系列font-family
+font-family 属性设置文本的字体系列。
+
+font-family 属性应该设置几个字体名称作为一种"后备"机制，如果浏览器不支持第一种字体，他将尝试下一种字体。
+
+**注意: 如果字体系列的名称超过一个字，它必须用引号，如Font Family："宋体"。**
+
+多个字体系列是用一个逗号分隔指明：
+```css
+p{font-family:"Times New Roman", Times, serif;}
+```
+
+#### 2.5.3 字体样式font-style
+
+主要是用于指定斜体文字的字体样式属性。  
+
+这个属性有三个值：  
++ 正常 - 正常显示文本
++ 斜体 - 以斜体字显示的文字
++ 倾斜的文字 - 文字向一边倾斜（和斜体非常类似，但不太支持）
+```css
+p.normal {font-style:normal;}
+p.italic {font-style:italic;}
+p.oblique {font-style:oblique;}
+```
+
+**italic 和 oblique 的区别**  
+一种字体有粗体、斜体、下划线、删除线等诸多属性。但是并不是所有字体都做了这些，一些不常用的字体，或许就只有个正常体，如果你用 italic，就没有效果了~这时候你就要用 oblique，可以理解成 italic 是使用文字的斜体，oblique 是让没有斜体属性的文字倾斜！  
+
+**换种说法**  
+italic 和 oblique 都是向右倾斜的文字, 但区别在于 italic 是指斜体字，而 oblique 是倾斜的文字，对于没有斜体的字体应该使用 oblique 属性值来实现倾斜的文字效果。
 
 
-#### 2.5.4 字体大小
+#### 2.5.4 字体大小font-size
+font-size 属性设置文本的大小。
+
+能否管理文字的大小，在网页设计中是非常重要的。**但是，你不能通过调整字体大小使段落看上去像标题，或者使标题看上去像段落。**
+
+请务必使用正确的HTML标签，就`<h1>` - `<h6>`表示标题和`<p>`表示段落：
+
+**字体大小的值可以是绝对或相对的大小。**
++ 绝对大小：
+    + 设置一个指定大小的文本
+    + 不允许用户在所有浏览器中改变文本大小
+    + 确定了输出的物理尺寸时绝对大小很有用
+
++ 相对大小：
+    + 相对于周围的元素来设置大小
+    + 允许用户在浏览器中改变文字大小
+    + 如果你不指定一个字体的大小，默认大小和普通文本段落一样，是16像素（16px=1em）。
+
+
+“px” 是像素（Pixel）的缩写，是一种绝对长度单位，表示屏幕上的一个最小显示单元 。“em” 是相对长度单位，相对于当前元素的字体大小。在浏览器中默认的文字大小是 16px，所以在这种默认情况下，1em 和 16px 相等，即 16px=1em。当修改了父元素的字体大小时，em 会相应改变，而像素值不会改变。
+
+
+设置文字的大小与像素，让您完全控制文字大小：
+```css
+h1 {font-size:40px;}
+h2 {font-size:30px;}
+p {font-size:14px;}
+```
+虽然可以通过浏览器的缩放工具调整文本大小，但是，这种调整是整个页面，而不仅仅是文本
+
+
+#### 2.5.5 用em来设置字体大小
+为了避免Internet Explorer 中无法调整文本的问题，许多开发者使用 em 单位代替像素。
+
+em的尺寸单位由W3C建议。
+
+**1em和当前字体大小相等。在浏览器中默认的文字大小是16px。**
+
+因此，1em的默认大小是16px。可以通过下面这个公式将像素转换为em：px/16=em
+```css
+h1 {font-size:2.5em;} /* 40px/16=2.5em */
+h2 {font-size:1.875em;} /* 30px/16=1.875em */
+p {font-size:0.875em;} /* 14px/16=0.875em */
+```
+![](2025-04-23-13-52-35.png)
 
 
 
-#### 2.5.5 字体大小像素
+#### 2.5.6 字体粗细font-weight
+三段文字设置不同的字体粗细
+```css
+p.normal {font-weight:normal;}
+p.thick {font-weight:bold;}
+p.thicker {font-weight:900;}
+```
++ normal	默认值。定义标准的字符。
++ bold	定义粗体字符。
++ bolder	定义更粗的字符。
++ lighter	定义更细的字符。
++ 定义由细到粗的字符,400 等同于 normal，而 700 等同于 bold。
+    + 100
+    + 200
+    + 300
+    + 400
+    + 500
+    + 600
+    + 700
+    + 800
+    + 900
++ inherit	规定应该从父元素继承字体的粗细。
 
 
-#### 2.5.6 用em来设置字体大小
+### 2.6 CSS链接
+不同的链接可以有不同的样式。
+
+#### 2.6.1链接样式  
+链接的样式，可以用任何CSS属性（如颜色，字体，背景等）。  
+
+特别的链接，可以有不同的样式，这取决于他们是什么状态。  
+
+这四个链接状态是：
++ a:link - 正常，未访问过的链接
++ a:visited - 用户已访问过的链接
++ a:hover - 当用户鼠标放在链接上时
++ a:active - 链接被点击的那一刻
+
+```css
+a:link {color:#000000;}      /* 未访问链接*/
+a:visited {color:#00FF00;}  /* 已访问链接 */
+a:hover {color:#FF00FF;}  /* 鼠标移动到链接上 */
+a:active {color:#0000FF;}  /* 鼠标点击时 */
+```
+
+当设置为若干链路状态的样式，也有一些顺序规则：
++ a:hover 必须跟在 a:link 和 a:visited后面
++ a:active 必须跟在 a:hover后面
+
+
+#### 2.6.2链接的修饰
+
+**文本修饰**
+text-decoration 属性主要用于删除链接中的下划线
+```css
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:underline;}
+```
+
+**背景颜色**
+背景颜色属性指定链接背景色：
+```css
+a:link {background-color:#B2FF99;}
+a:visited {background-color:#FFFF85;}
+a:hover {background-color:#FF704D;}
+a:active {background-color:#FF704D;}
+```
+
+
+### 2.7 CSS列表
+CSS 列表属性作用如下：
++ 设置不同的列表项标记为有序列表
++ 设置不同的列表项标记为无序列表
++ 设置列表项标记为图像
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
