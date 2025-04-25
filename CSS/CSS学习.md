@@ -880,7 +880,7 @@ p.thicker {font-weight:900;}
 ### 2.6 CSS链接
 不同的链接可以有不同的样式。
 
-#### 2.6.1链接样式  
+#### 2.6.1 链接样式  
 链接的样式，可以用任何CSS属性（如颜色，字体，背景等）。  
 
 特别的链接，可以有不同的样式，这取决于他们是什么状态。  
@@ -903,7 +903,7 @@ a:active {color:#0000FF;}  /* 鼠标点击时 */
 + a:active 必须跟在 a:hover后面
 
 
-#### 2.6.2链接的修饰
+#### 2.6.2 链接的修饰
 
 **文本修饰**
 text-decoration 属性主要用于删除链接中的下划线
@@ -930,74 +930,521 @@ CSS 列表属性作用如下：
 + 设置不同的列表项标记为无序列表
 + 设置列表项标记为图像
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### 2.7.1 两种类型
+在 HTML中，有两种类型的列表：
++ 无序列表 ul - 列表项标记用特殊图形（如小黑点、小方框等）
++ 有序列表 ol - 列表项的标记有数字或字母
+
+使用 CSS，可以列出进一步的样式，并可用图像作列表项标记。
+
+无序列表:
++ Coffee
++ Tea
++ Coca Cola
++ Coffee
++ Tea
++ Coca Cola
+
+有序列表:
+1. Coffee
+2. Tea
+3. Coca Cola
+4. Coffee
+5. Tea
+6. Coca Cola
+
+#### 2.7.2 列表项标记list-style-type
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+ul.a {list-style-type:circle;}
+ul.b {list-style-type:square;}
+ol.c {list-style-type:upper-roman;}
+ol.d {list-style-type:lower-alpha;}
+</style>
+</head>
+
+<body>
+<p>无序列表实例:</p>
+
+<ul class="a">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Coca Cola</li>
+</ul>
+
+<ul class="b">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Coca Cola</li>
+</ul>
+
+<p>有序列表实例:</p>
+
+<ol class="c">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Coca Cola</li>
+</ol>
+
+<ol class="d">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Coca Cola</li>
+</ol>
+
+</body>
+</html>
+```
+一些值是无序列表，以及有些是有序列表。
+![](2025-04-23-15-05-27.png)
+
+
+**作为列表项标记的图像**
+
+要指定列表项标记的图像，使用列表样式图像属性：
+
+```css
+ul
+{
+    list-style-image: url('sqpurple.gif');
+}
+```
+![](2025-04-23-15-06-43.png)
+
+
+**浏览器兼容性解决方案**
+```css
+ul
+{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+ul li
+{
+    background-image: url(sqpurple.gif);
+    background-repeat: no-repeat;
+    background-position: 0px 5px; 
+    padding-left: 14px; 
+}
+```
+
++ ul:
+    + 设置列表类型为没有列表项标记
+    + 设置填充和边距 0px（浏览器兼容性）
++ ul 中所有 li:
+    + 设置图像的 URL，并设置它只显示一次（无重复）
+    + 您需要的定位图像位置（左 0px 和上下 5px）
+    + 用 padding-left 属性把文本置于列表中
+
+
+#### 2.7.3 简写属性
+在单个属性中可以指定所有的列表属性。这就是所谓的简写属性。
+
+为列表使用简写属性，列表样式属性设置如下：
+```css
+ul
+{
+    list-style: square url("sqpurple.gif");
+}
+```
+可以按顺序设置如下属性：
+
+list-style-type
+list-style-position (有关说明，请参见下面的CSS属性表)
+list-style-image
+如果上述值丢失一个，其余仍在指定的顺序，就没关系。
+
+
+#### 2.7.4 移除默认设置
+list-style-type:none 属性可以用于移除小标记。  
+默认情况下列表 `<ul> `或 `<ol> `还设置了内边距和外边距，  
+可使用 margin:0 和 padding:0 来移除:  
+```css
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+```
+
+
+
+### 2.8 CSS表格
+使用 CSS 可以使 HTML 表格更美观。
+
+
+#### 2.8.1 表格边框
+指定CSS表格边框，使用border属性。
+
+下面的例子指定了一个表格的Th和TD元素的黑色边框：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title>
+<style>
+table,th,td
+{
+	border:1px solid black;
+}
+</style>
+</head>
+
+<body>
+<table>
+<tr>
+<th>Firstname</th>
+<th>Lastname</th>
+</tr>
+<tr>
+<td>Peter</td>
+<td>Griffin</td>
+</tr>
+<tr>
+<td>Lois</td>
+<td>Griffin</td>
+</tr>
+</table>
+</body>
+</html>
+```
+请注意，在上面的例子中的表格有双边框。这是因为表和th/ td元素有独立的边界。
+
+为了显示一个表的单个边框，使用 border-collapse属性。
+
+![](2025-04-25-22-44-12.png)
+
+
+
+#### 2.8.2 折叠边框
+border-collapse 属性设置表格的边框是否被折叠成一个单一的边框或隔开：
+```css
+table
+{
+    border-collapse:collapse;
+}
+table,th, td
+{
+    border: 1px solid black;
+}
+```
+
+![](2025-04-25-22-46-21.png)
+
+
+#### 2.8.3 表格宽度和高度
+Width和height属性定义表格的宽度和高度。
+
+下面的例子是设置100％的宽度，50像素的th元素的高度的表格：
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title>
+<style>
+table,td,th
+{
+	border:1px solid black;
+}
+table
+{
+	width:100%;
+}
+th
+{
+	height:50px;
+}
+</style>
+</head>
+
+<body>
+<table>
+<tr>
+<th>Firstname</th>
+<th>Lastname</th>
+<th>Savings</th>
+</tr>
+<tr>
+<td>Peter</td>
+<td>Griffin</td>
+<td>$100</td>
+</tr>
+<tr>
+<td>Lois</td>
+<td>Griffin</td>
+<td>$150</td>
+</tr>
+<tr>
+<td>Joe</td>
+<td>Swanson</td>
+<td>$300</td>
+</tr>
+<tr>
+<td>Cleveland</td>
+<td>Brown</td>
+<td>$250</td>
+</tr>
+</table>
+</body>
+</html>
+```
+![](2025-04-25-22-51-30.png)
+
+#### 2.8.4 表格文字对齐
+表格中的文本对齐和垂直对齐属性。
+
+text-align属性设置水平对齐方式，向左，右，或中心：
+```css
+td
+{
+    text-align:right;
+}
+```
+垂直对齐属性设置垂直对齐，比如顶部，底部或中间：
+```css
+td
+{
+    height:50px;
+    vertical-align:bottom;
+}
+```
+
+
+#### 2.8.5 表格填充
+如需控制边框和表格内容之间的间距，应使用td和th元素的填充属性：
+```css
+td
+{
+    padding:15px;
+}
+```
+
+
+
+#### 2.8.6 表格颜色
+下面的例子指定边框的颜色，和th元素的文本和背景颜色：
+```css
+table, td, th
+{
+    border:1px solid green;
+}
+th
+{
+    background-color:green;
+    color:white;
+}
+```
+
+
+
+
+### 2.9 CSS盒子模型
+
+
+#### 2.9.1 CSS 盒子模型(Box Model)
+所有HTML元素可以看作盒子，在CSS中，"box model"这一术语是用来设计和布局时使用。
+
+CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容。
+
+盒模型允许我们在其它元素和周围元素边框之间的空间放置元素。
+
+下面的图片说明了盒子模型(Box Model)：
+![](2025-04-25-23-01-57.png)
+
+不同部分的说明：
+
++ Margin(外边距) - 清除边框外的区域，外边距是透明的。
++ Border(边框) - 围绕在内边距和内容外的边框。
++ Padding(内边距) - 清除内容周围的区域，内边距是透明的。
++ Content(内容) - 盒子的内容，显示文本和图像。
+
+为了正确设置元素在所有浏览器中的宽度和高度，你需要知道的盒模型是如何工作的。
+
+
+
+#### 2.9.2 元素的宽度和高度
+当您指定一个 CSS 元素的宽度和高度属性时，你只是设置内容区域的宽度和高度。要知道，完整大小的元素，你还必须添加内边距，边框和外边距。
+
+下面的例子中的元素的总宽度为 450px：
+```css
+div {
+    width: 300px;
+    border: 25px solid green;
+    padding: 25px;
+    margin: 25px;
+}
+```
+让我们自己算算：
+300px (宽)
++ 50px (左 + 右填充)
++ 50px (左 + 右边框)
++ 50px (左 + 右边距)
+= 450px
+
+试想一下，你只有 250 像素的空间。让我们设置总宽度为 250 像素的元素:
+```css
+div {
+    width: 220px;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: 0; 
+}
+```
++ 最终元素的总宽度计算公式是这样的：  
+    + 总元素的宽度=宽度+左填充+右填充+左边框+右边框+左边距+右边距
++ 元素的总高度最终计算公式是这样的：  
+    + 总元素的高度=高度+顶部填充+底部填充+上边框+下边框+上边距+下边距
+
+
+### 2.10 CSS边框
+CSS 边框（Border）是用于定义元素边框样式的属性。
+
+边框可以应用于任何 HTML 元素，用于增强视觉效果、分隔内容或突出显示元素。
+
+CSS 边框属性主要包括边框宽度、边框样式、边框颜色以及简写属性。
+
+#### 2.10.1 CSS边框属性
+![](2025-04-25-23-17-42.png)
+
+
+#### 2.10.2 边框样式border-style
+边框样式属性指定要显示什么样的边界。
+
+border-style 属性用于指定要显示的边框类型。
+
+允许的值如下：
++ dotted：定义点状边框。
++ dashed：定义虚线边框。
++ solid：定义实线边框。
++ double：定义双线边框。
++ groove：定义三维沟槽边框。效果取决于 border-color 的值。
++ ridge：定义三维脊状边框。效果取决于 border-color 的值。
++ inset：定义三维嵌入边框。效果取决于 border-color 的值。
++ outset：定义三维突出边框。效果取决于 border-color 的值。
++ none：定义无边框。
++ hidden：定义隐藏边框。
+
+
+**border-style 演示:**
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+p.none {border-style:none;}
+p.dotted {border-style:dotted;}
+p.dashed {border-style:dashed;}
+p.solid {border-style:solid;}
+p.double {border-style:double;}
+p.groove {border-style:groove;}
+p.ridge {border-style:ridge;}
+p.inset {border-style:inset;}
+p.outset {border-style:outset;}
+p.hidden {border-style:hidden;}
+p.mix {border-style: dotted dashed solid double;}
+</style>
+</head>
+
+<body>
+<p class="none">无边框。</p>
+<p class="dotted">虚线边框。</p>
+<p class="dashed">虚线边框。</p>
+<p class="solid">实线边框。</p>
+<p class="double">双边框。</p>
+<p class="groove"> 凹槽边框。</p>
+<p class="ridge">垄状边框。</p>
+<p class="inset">嵌入边框。</p>
+<p class="outset">外凸边框。</p>
+<p class="hidden">隐藏边框。</p>
+<p class="mix">混合边框</p>
+</body>
+
+</html>
+```
+![](2025-04-25-23-20-15.png)
+
+#### 2.11.3 边框宽度
+您可以通过 border-width 属性为边框指定宽度。
+
+为边框指定宽度有两种方法：可以指定长度值，比如 2px 或 0.1em(单位为 px, pt, cm, em 等)，或者使用 3 个关键字之一，它们分别是 thick 、medium（默认值） 和 thin。
+
+**注意**：CSS 没有定义 3 个关键字的具体宽度，所以一个用户可能把 thick 、medium 和 thin 分别设置为等于 5px、3px 和 2px，而另一个用户则分别设置为 3px、2px 和 1px。
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title>
+<style>
+p.one 
+{
+	border-style:solid;
+	border-width:5px;
+}
+p.two 
+{
+	border-style:solid;
+	border-width:medium;
+}
+p.three
+{
+	border-style:solid;
+	border-width:1px;
+}
+</style>
+</head>
+
+<body>
+<p class="one">一些文本。</p>
+<p class="two">一些文本。</p>
+<p class="three">一些文本。</p>
+<p><b>注意:</b> "border-width" 属性 如果单独使用则不起作用。要先使用 "border-style" 属性来设置边框。</p>
+</body>
+
+</html>
+```
+![](2025-04-25-23-24-17.png)
+
+
+#### 2.11.4 边框颜色
+border-color属性用于设置边框的颜色。可以设置的颜色：
+
+name - 指定颜色的名称，如 "red"  
+RGB - 指定 RGB 值, 如 "rgb(255,0,0)"  
+Hex - 指定16进制值, 如 "#ff0000"  
+您还可以设置边框的颜色为"transparent"。  
+ 
+**注意： border-color单独使用是不起作用的，必须得先使用border-style来设置边框样式。**
+```css
+p.one
+{
+    border-style:solid;
+    border-color:red;
+}
+p.two
+{
+    border-style:solid;
+    border-color:#98bf21;
+}
+```
+![](2025-04-25-23-30-01.png)
+
+
+
+
+#### 2.11.5 边框-单独设置各边
 
 
 
