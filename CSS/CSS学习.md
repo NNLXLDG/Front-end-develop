@@ -1374,7 +1374,7 @@ p.mix {border-style: dotted dashed solid double;}
 ```
 ![](2025-04-25-23-20-15.png)
 
-#### 2.11.3 边框宽度
+#### 2.10.3 边框宽度
 您可以通过 border-width 属性为边框指定宽度。
 
 为边框指定宽度有两种方法：可以指定长度值，比如 2px 或 0.1em(单位为 px, pt, cm, em 等)，或者使用 3 个关键字之一，它们分别是 thick 、medium（默认值） 和 thin。
@@ -1418,7 +1418,7 @@ p.three
 ![](2025-04-25-23-24-17.png)
 
 
-#### 2.11.4 边框颜色
+#### 2.10.4 边框颜色
 border-color属性用于设置边框的颜色。可以设置的颜色：
 
 name - 指定颜色的名称，如 "red"  
@@ -1444,7 +1444,75 @@ p.two
 
 
 
-#### 2.11.5 边框-单独设置各边
+#### 2.10.5 边框-单独设置各边
+```css
+p
+{
+    border-top-style:dotted;
+    border-right-style:solid;
+    border-bottom-style:dotted;
+    border-left-style:solid;
+}
+```
+上面的例子也可以设置一个单一属性：
+```css
+border-style:dotted solid;
+```
+
+**border-style属性可以有1-4个值：**
+
++ border-style:dotted solid double dashed;
+    + 上边框是 dotted
+    + 右边框是 solid
+    + 底边框是 double
+    + 左边框是 dashed
+
++ border-style:dotted solid double;
+    + 上边框是 dotted
+    + 左、右边框是 solid
+    + 底边框是 double
+
++ border-style:dotted solid;
+    + 上、底边框是 dotted
+    + 右、左边框是 solid
+
++ border-style:dotted;
+    + 四面边框是 dotted
+
+
+**上面的例子用了border-style。然而，它也可以和border-width 、 border-color一起使用。**
+
+
+#### 2.10.6 边框-简写属性
+上面的例子用了很多属性来设置边框。
+
+你也可以在一个属性中设置边框。
+
+你可以在"border"属性中设置：
+
++ border-width
++ border-style (required)
++ border-color
+
+```css
+border:5px solid red;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
