@@ -1498,12 +1498,397 @@ border-style:dotted solid;
 border:5px solid red;
 ```
 
+### 2.11 CSS轮廓（outline）
+轮廓（outline）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。
+
+轮廓（outline）属性指定元素轮廓的样式、颜色和宽度。
+
+
+轮廓（outline）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。
+
+**CSS outline 属性规定元素轮廓的样式、颜色和宽度。**
+![](2025-04-26-22-46-30.png)
+
+
+### 2.12 CSS外边距(margin)
+CSS margin(外边距)属性定义元素周围的空间。
+
+margin 清除周围的（外边框）元素区域。margin 没有背景颜色，是完全透明的。
+
+margin 可以单独改变元素的上，下，左，右边距，也可以一次改变所有的属性。
+![](2025-04-26-22-50-40.png)
+
+**Margin - 单边外边距属性**
+在CSS中，它可以指定不同的侧面不同的边距：
+```css
+margin-top:100px;
+margin-bottom:100px;
+margin-right:50px;
+margin-left:50px;
+```
+
+**Margin - 简写属性**
+为了缩短代码，有可能使用一个属性中margin指定的所有边距属性。这就是所谓的简写属性。
+
+所有边距属性的简写属性是 margin :
+```css
+margin:100px 50px;
+```
+
+margin属性可以有一到四个值。
+
++ margin:25px 50px 75px 100px;  
+上边距为25px
+右边距为50px
+下边距为75px
+左边距为100px
+
++ margin:25px 50px 75px;  
+上边距为25px
+左右边距为50px
+下边距为75px
+
++ margin:25px 50px;   
+上下边距为25px
+左右边距为50px
+
++ margin:25px;  
+所有的4个边距都是25px
+
+
+
+### 2.13 CSS填充（padding）
+CSS padding（填充）是一个简写属性，定义元素边框与元素内容之间的空间，即上下左右的内边距。
+
+在CSS中，它可以指定不同的侧面不同的填充：
+```css
+padding-top:25px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:50px;
+```
+上内边距是 25px
+右内边距是 50px
+下内边距是 25px
+左内边距是 50px
+
+
+**填充 - 简写属性**
+为了缩短代码，它可以在一个属性中指定所有的填充属性。
+
+这就是所谓的简写属性。所有的填充属性的简写属性是 padding :
+```css
+padding:25px 50px;
+```
+Padding属性，可以有一到四个值。
+
+具体操作与margin一致。
+
+
+
+### 2.14 CSS分组和嵌套选择器
+**分组选择器**
+在样式表中有很多具有相同样式的元素。
+```css
+h1 {
+    color:green;
+}
+h2 {
+    color:green;
+}
+p {
+    color:green;
+}
+```
+为了尽量减少代码，你可以使用分组选择器。
+
+每个选择器用逗号分隔。
+
+在下面的例子中，我们对以上代码使用分组选择器：
+```css
+h1,h2,p
+{
+    color:green;
+}
+```
+
+**嵌套选择器**  
+它可能适用于选择器内部的选择器的样式。
+
+在下面的例子设置了四个样式：
++ p{ }: 为所有 p 元素指定一个样式。
++ .marked{ }: 为所有 class="marked" 的元素指定一个样式。
++ .marked p{ }: 为所有 class="marked" 元素内的 p 元素指定一个样式。
++ p.marked{ }: 为所有 class="marked" 的 p 元素指定一个样式。
+
+```css
+p
+{
+    color:blue;
+    text-align:center;
+}
+.marked
+{
+    background-color:red;
+}
+.marked p
+{
+    color:white;
+}
+p.marked{
+    text-decoration:underline;
+}
+```
+
+
+### 2.15 CSS尺寸(Dimension)
+CSS 尺寸 (Dimension) 属性允许你控制元素的高度和宽度。同样，它允许你增加行间距。
+
+#### 2.15.1 设置元素的高度
+```css
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+img.normal
+{
+	height:auto;
+}
+img.big
+{
+	height:200px;
+}
+p.ex
+{
+	height:100px;
+	width:100px;
+}
+</style>
+</head>
+
+<body>
+<img class="normal" src="logocss.gif" width="95" height="84" /><br>
+<img class="big" src="logocss.gif" width="95" height="84" />
+<p class="ex">这个段落的高和宽是 100px.</p>
+<p>这是段落中的一些文本。这是段落中的一些文本。
+这是段落中的一些文本。这是段落中的一些文本。
+这是段落中的一些文本。这是段落中的一些文本.</p>
+</body>
+</html>
+```
+![](2025-04-26-23-18-44.png)
+
+
+
+#### 2.15.2 使用百分比设置图像的高度
+```css
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+html {height:100%;}
+body {height:100%;}
+img.normal {height:auto;}
+img.big {height:50%;}
+img.small {height:10%;}
+</style>
+</head>
+
+<body>
+<img class="normal" src="logocss.gif" width="95" height="84" /><br>
+<img class="big" src="logocss.gif" width="95" height="84" /><br>
+<img class="small" src="logocss.gif" width="95" height="84" />
+</body>
+</html>
+```
+![](2025-04-26-23-20-59.png)
+
+
+
+#### 2.15.3 使用像素值来设置元素的宽度
+```css
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+img {width:200px;}
+</style>
+</head>
+<body>
+
+<img src="logocss.gif" width="95" height="84" />
+
+</body>
+</html>
+```
+![](2025-04-26-23-34-08.png)
+
+
+
+#### 2.15.4 设置元素的最大高度
+```css
+
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style type="text/css">
+p
+{
+	max-height:50px;
+	background-color:yellow;
+}
+</style>
+</head>
+
+<body>
+<p>本段落的最大高度被设置为 50px。 本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。</p>
+</body>
+</html>
+
+```
+
+
+![](2025-04-26-23-35-33.png)
 
 
 
 
+#### 2.15.5 使用百分比来设置元素的最大宽度
+```css
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+p
+{
+	max-width:20%;
+	background-color:yellow;
+}
+</style>
+</head>
+<body>
+
+<p>This is some text. This is some text. This is some text.
+This is some text. This is some text. This is some text.
+This is some text. This is some text. This is some text.</p>
+
+</body>
+</html>
+```
+![](2025-04-26-23-38-05.png)
 
 
+
+#### 2.15.6 设置元素的最低高度
+```css
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+p
+{
+	min-height:100px;
+	background-color:yellow;
+}
+</style>
+</head>
+
+<body>
+<p>这段的最小高度设置为100 px。</p>
+</body>
+</html>
+```
+![](2025-04-26-23-53-22.png)
+
+
+#### 2.15.7 使用像素值设置元素的最小宽度
+```css
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+p
+{
+	min-width:150px;
+	background-color:yellow;
+}
+</style>
+</head>
+
+<body>
+<p>这个段落的最小宽度设置为 150px。</p>
+</body>
+</html>
+```
+![](2025-04-26-23-54-36.png)
+
+
+
+
+### 2.16 CSS Display(显示) 与 Visibility（可见性）
+display属性设置一个元素应如何显示，visibility属性指定一个元素应可见还是隐藏。
+
+#### 2.16.1 隐藏元素 - display:none或visibility:hidden
+隐藏一个元素可以通过把display属性设置为"none"，或把visibility属性设置为"hidden"。但是请注意，这两种方法会产生不同的结果。
+
+visibility:hidden可以隐藏某个元素，但隐藏的元素仍需占用与未隐藏之前一样的空间。也就是说，该元素虽然被隐藏了，但仍然会影响布局。
+
+```css
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+h1.hidden {visibility:hidden;}
+</style>
+</head>
+
+<body>
+<h1>这是一个可见标题</h1>
+<h1 class="hidden">这是一个隐藏标题</h1>
+<p>注意, 实例中的隐藏标题仍然占用空间。</p>
+</body>
+</html>
+```
+
+![](2025-04-27-00-12-52.png)
+
+
+display:none可以隐藏某个元素，且隐藏的元素不会占用任何空间。也就是说，该元素不但被隐藏了，而且该元素原本占用的空间也会从页面布局中消失。
+
+```css
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+h1.hidden {display:none;}
+</style>
+</head>
+<body>
+	
+<h1>这是一个可见标题</h1>
+<h1 class="hidden">这是一个隐藏标题</h1>
+<p>注意, 实例中的隐藏标题不占用空间。</p>
+	
+</body>
+</html>
+```
 
 
 
