@@ -103,6 +103,11 @@
       - [2.20.7垂直居中 - 使用 line-height](#2207垂直居中---使用-line-height)
       - [2.20.8垂直居中 - 使用 position 和 transform](#2208垂直居中---使用-position-和-transform)
     - [2.21 CSS组合选择符](#221-css组合选择符)
+      - [2.21.1 后代选择器](#2211-后代选择器)
+      - [2.21.2 子元素选择器](#2212-子元素选择器)
+      - [2.21.3 相邻兄弟选择器](#2213-相邻兄弟选择器)
+      - [2.21.4 后续兄弟选择器](#2214-后续兄弟选择器)
+    - [2.22 伪类](#222-伪类)
 
 ## 1 第一章：引入
 
@@ -2898,6 +2903,169 @@ CSS 中有很多方式可以实现垂直居中对齐。 一个简单的方式就
 
 
 ### 2.21 CSS组合选择符
+CSS组合选择符包括各种简单选择符的组合方式。
+
+在 CSS3 中包含了四种组合方式:
++ 后代选择器(以空格` `分隔)
++ 子元素选择器（以大于 > 号分隔）
++ 相邻兄弟选择器（以加号 + 分隔）
++ 普通兄弟选择器（以波浪号 ～ 分隔）
+
+
+
+#### 2.21.1 后代选择器
+后代选择器用于选取某元素的后代元素。
+
+以下实例选取所有 <p> 元素插入到 <div> 元素中: 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+div p
+{
+	background-color:yellow;
+}
+</style>
+</head>
+<body>
+
+<div>
+<p>段落 1。 在 div 中。</p>
+<p>段落 2。 在 div 中。</p>
+</div>
+
+<p>段落 3。不在 div 中。</p>
+<p>段落 4。不在 div 中。</p>
+
+</body>
+</html>
+```
+![](2025-04-27-22-10-17.png)
+
+
+
+#### 2.21.2 子元素选择器
+与后代选择器相比，子元素选择器（Child selectors）只能选择作为某元素直接/一级子元素的元素。
+
+以下实例选择了`<div>`元素中所有**直接**子元素`<p>`：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+div>p
+{
+	background-color:yellow;
+}
+</style>
+</head>
+
+<body>
+<h1>Welcome to My Homepage</h1>
+<div>
+<h2>My name is Donald</h2>
+<p>I live in Duckburg.</p>
+</div>
+
+<div>
+<span><p>I will not be styled.</p></span>
+</div>
+
+<p>My best friend is Mickey.</p>
+</body>
+</html>
+```
+![](2025-04-27-22-27-44.png)
+
+
+#### 2.21.3 相邻兄弟选择器
+相邻兄弟选择器（Adjacent sibling selector）可选择紧接在另一元素后的元素，且二者有相同父元素。
+
+如果需要选择紧接在另一个元素后的元素，而且二者有相同的父元素，可以使用相邻兄弟选择器（Adjacent sibling selector）。
+
+以下实例选取了所有位于`<div>`元素后的第一个`<p>`元素:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+div+p
+{
+	background-color:yellow;
+}
+</style>
+</head>
+<body>
+
+<h1>文章标题</h1>
+
+<div>
+<h2>DIV 内部标题</h2>
+<p>DIV 内部段落。</p>
+</div>
+
+<p>DIV 之后的第一个 P 元素。</p>
+
+<p>DIV 之后的第二个 P 元素。</p>
+
+</body>
+</html>
+```
+![](2025-04-27-22-32-47.png)
+
+
+#### 2.21.4 后续兄弟选择器
+后续兄弟选择器选取所有指定元素之后的相邻兄弟元素。
+
+以下实例选取了所有 <div> 元素之后的所有相邻兄弟元素 <p> : 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+div~p
+{
+	background-color:yellow;
+}
+</style>
+</head>
+<body>
+	
+<p>之前段落，不会添加背景颜色。</p>
+<div>
+<p>段落 1。 在 div 中。</p>
+<p>段落 2。 在 div 中。</p>
+</div>
+
+<p>段落 3。不在 div 中。</p>
+<p>段落 4。不在 div 中。</p>
+
+</body>
+</html>
+```
+![](2025-04-27-22-33-23.png)
+
+
+
+### 2.22 伪类
+
+
+
+
+
+
+
+
+
 
 
 
