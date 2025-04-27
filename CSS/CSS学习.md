@@ -1889,6 +1889,866 @@ h1.hidden {display:none;}
 </body>
 </html>
 ```
+![](2025-04-27-19-00-07.png)
+
+
+#### 2.16.2 CSS Display - 块和内联元素
+块元素是一个元素，占用了全部宽度，在前后都是换行符。
+
+块元素的例子：
++ `<h1>`   
++ `<p>`   
++ `<div>`   
+
+**内联元素只需要必要的宽度，不强制换行。**
+
+内联元素的例子：
++ `<span>`
++ `<a>`
+
+
+如何改变一个元素显示     
+可以更改内联元素和块元素，反之亦然，可以使页面看起来是以一种特定的方式组合，并仍然遵循web标准。  
+
+下面的示例把列表项显示为内联元素：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+li{display:inline;}
+</style>
+</head>
+<body>
+
+<p>链接列表水平显示：</p>
+
+<ul>
+<li><a href="/html/" target="_blank">HTML</a></li>
+<li><a href="/css/" target="_blank">CSS</a></li>
+<li><a href="/js/" target="_blank">JavaScript</a></li>
+<li><a href="/xml/" target="_blank">XML</a></li>
+</ul>
+
+</body>
+</html>
+```
+![](2025-04-27-19-24-53.png)
+
+
+下面的示例把span元素作为块元素：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+span
+{
+	display:block;
+}
+</style>
+</head>
+<body>
+
+<h2>Nirvana</h2>
+<span>Record: MTV Unplugged in New York</span>
+<span>Year: 1993</span>
+<h2>Radiohead</h2>
+<span>Record: OK Computer</span>
+<span>Year: 1997</span>
+
+</body>
+</html>
+```
+![](2025-04-27-19-24-07.png)
+注意：变更元素的显示类型看该元素是如何显示，它是什么样的元素。
+
+例如：一个内联元素设置为display:block是不允许有它内部的嵌套块元素。
+
+
+
+
+### 2.17 CSS Position(定位)
+position 属性指定了元素的定位类型。
+
+position 属性的五个值：
++ static
++ relative
++ fixed
++ absolute
++ sticky
+
+元素可以使用的顶部，底部，左侧和右侧属性定位。然而，这些属性无法工作，除非事先设定position属性。他们也有不同的工作方式，这取决于定位方法。
+
+
+#### 2.17.1 static 定位
+HTML 元素的默认值，即没有定位，遵循正常的文档流对象。
+
+静态定位的元素不会受到 top, bottom, left, right影响。
+```css
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+div.static {
+    position: static;
+    border: 3px solid #73AD21;
+}
+</style>
+</head>
+<body>
+
+<h2>position: static;</h2>
+
+<p>使用 position: static; 定位的元素，无特殊定位，遵循正常的文档流对象:</p>
+
+<div class="static">
+该元素使用了 position: static;
+</div>
+
+</body>
+</html>
+```
+![](2025-04-27-19-34-40.png)
+
+
+#### 2.17.2 fixed 定位
+元素的位置相对于浏览器窗口是固定位置。
+
+即使窗口是滚动的它也不会移动：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+p.pos_fixed
+{
+	position:fixed;
+	top:30px;
+	right:5px;
+}
+</style>
+</head>
+<body>
+
+<p class="pos_fixed">Some more text</p>
+<p><b>注意:</b> IE7 和 IE8 支持只有一个 !DOCTYPE 指定固定值.</p>
+<p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p>
+</body>
+</html>
+```
+![](2025-04-27-19-36-01.png)
+
+Fixed定位使元素的位置与文档流无关，因此不占据空间。
+
+Fixed定位的元素和其他元素重叠。
+
+
+
+#### 2.17.3 relative 定位
+相对定位元素的定位是相对其正常位置。
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+h2.pos_left
+{
+	position:relative;
+	left:-20px;
+}
+
+h2.pos_right
+{
+	position:relative;
+	left:20px;
+}
+</style>
+</head>
+
+<body>
+<h2>这是位于正常位置的标题</h2>
+<h2 class="pos_left">这个标题相对于其正常位置向左移动</h2>
+<h2 class="pos_right">这个标题相对于其正常位置向右移动</h2>
+<p>相对定位会按照元素的原始位置对该元素进行移动。</p>
+<p>样式 "left:-20px" 从元素的原始左侧位置减去 20 像素。</p>
+<p>样式 "left:20px" 向元素的原始左侧位置增加 20 像素。</p>
+</body>
+
+</html>
+```
+![](2025-04-27-19-43-26.png)
+
+移动相对定位元素，但它原本所占的空间不会改变。
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+h2.pos_top
+{
+	position:relative;
+	top:-50px;
+}
+</style>
+</head>
+
+<body>
+<h2>这是一个没有定位的标题</h2>
+<h2 class="pos_top">这个标题是根据其正常位置向上移动</h2>
+<p><b>注意:</b> 即使相对定位元素的内容是移动,预留空间的元素仍保存在正常流动。</p>
+</body>
+
+</html>
+```
+
+
+![](2025-04-27-19-45-43.png)
+
+相对定位元素经常被用来作为绝对定位元素的容器块。
+
+
+#### 2.17.4 absolute 定位
+绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于`<html>`:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+h2
+{
+	position:absolute;
+	left:100px;
+	top:150px;
+}
+</style>
+</head>
+
+<body>
+<h2>这是一个绝对定位了的标题</h2>
+<p>用绝对定位,一个元素可以放在页面上的任何位置。标题下面放置距离左边的页面100 px和距离页面的顶部150 px的元素。.</p>
+</body>
+
+</html>
+```
+
+![](2025-04-27-19-58-55.png)
+
+absolute 定位使元素的位置与文档流无关，因此不占据空间。
+
+absolute 定位的元素和其他元素重叠。
+
+#### 2.17.5 sticky 定位
+sticky 英文字面意思是粘，粘贴，所以可以把它称之为粘性定位。
+
+**position: sticky; 基于用户的滚动位置来定位。**
+
+粘性定位的元素是依赖于用户的滚动，在 position:relative 与 position:fixed 定位之间切换。
+
+它的行为就像 position:relative; 而当页面滚动超出目标区域时，它的表现就像 position:fixed;，它会固定在目标位置。
+
+元素定位表现为在跨越特定阈值前为相对定位，之后为固定定位。
+
+这个特定阈值指的是 top, right, bottom 或 left 之一，换言之，指定 top, right, bottom 或 left 四个阈值其中之一，才可使粘性定位生效。否则其行为与相对定位相同。
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: #cae8ca;
+  border: 2px solid #4CAF50;
+}
+</style>
+</head>
+<body>
+
+<p>尝试滚动页面。</p>
+<p>注意: IE/Edge 15 及更早 IE 版本不支持 sticky 属性。</p>
+
+<div class="sticky">我是粘性定位!</div>
+
+<div style="padding-bottom:2000px">
+  <p>滚动我</p>
+  <p>来回滚动我</p>
+  <p>滚动我</p>
+  <p>来回滚动我</p>
+  <p>滚动我</p>
+  <p>来回滚动我</p>
+</div>
+
+</body>
+</html>
+```
+![](2025-04-27-20-26-49.png)
+
+
+
+
+#### 2.17.6 重叠的元素
+元素的定位与文档流无关，所以它们可以覆盖页面上的其它元素
+
+z-index属性指定了一个元素的堆叠顺序（哪个元素应该放在前面，或后面）
+
+一个元素可以有正数或负数的堆叠顺序：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+img
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:-1;
+}
+</style>
+</head>
+
+<body>
+<h1>This is a heading</h1>
+<img src="w3css.gif" width="100" height="140" />
+<p>因为图像元素设置了 z-index 属性值为 -1, 所以它会显示在文字之后。</p>
+</body>
+</html>
+```
+![](2025-04-27-20-30-04.png)
+
+具有更高堆叠顺序的元素总是在较低的堆叠顺序元素的前面。
+
+
+**注意： 如果两个定位元素重叠，没有指定z - index，最后定位在HTML代码中的元素将被显示在最前面。**
+
+
+### 2.18 CSS布局 - Overflow
+
+#### 2.18.1 CSS overflow 属性用于控制内容溢出元素框时显示的方式。
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+#overflowTest {
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    width: 80%;
+    height: 100px;
+    overflow: scroll;
+    border: 1px solid #ccc;
+}
+</style>
+</head>
+<body>
+
+<div id="overflowTest">
+<p>这里的文本内容是可以滚动的，滚动条方向是垂直方向。</p>
+<p>这里的文本内容是可以滚动的，滚动条方向是垂直方向。</p>
+<p>这里的文本内容是可以滚动的，滚动条方向是垂直方向。</p>
+<p>这里的文本内容是可以滚动的，滚动条方向是垂直方向。</p>
+<p>这里的文本内容是可以滚动的，滚动条方向是垂直方向。</p>
+<p>这里的文本内容是可以滚动的，滚动条方向是垂直方向。</p>
+</div>
+
+</body>
+</html>
+```
+![](2025-04-27-20-34-12.png)
+
+CSS overflow 属性可以控制内容溢出元素框时在对应的元素区间内添加滚动条。
+
+overflow属性有以下值：
+![](2025-04-27-20-34-52.png)
+
+注意:
++ overflow 属性只工作于指定高度的块元素上。   
++ 在 OS X Lion ( Mac 系统) 系统上，滚动条默认是隐藏的，使用的时候才会显示 (设置 "overflow:scroll" 也是一样的)。
+
+#### 2.18.2 overflow: visible
+默认情况下，overflow 的值为 visible， 意思是内容溢出元素框：
+
+![](2025-04-27-20-37-01.png)
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<style>
+div {
+    background-color: #eee;
+    width: 200px;
+    height: 50px;
+    border: 1px dotted black;
+    overflow: visible;
+}
+</style>
+</head>
+<body>
+
+<div id="overflowTest">
+<p>这里的文本内容会溢出元素框。</p>
+<p>这里的文本内容会溢出元素框。</p>
+<p>这里的文本内容会溢出元素框。</p>
+</div>
+
+</body>
+</html>
+```
+![](2025-04-27-20-39-14.png)
+
+
+
+### 2.19 CSS Float(浮动)
+什么是 CSS Float（浮动）？
+
+CSS 的 Float（浮动），会使元素向左或向右移动，其周围的元素也会重新排列。
+
+Float（浮动），往往是用于图像，但它在布局时一样非常有用。
+
+
+
+#### 2.19.1 元素怎样浮动
+元素的水平方向浮动，意味着元素只能左右移动而不能上下移动。
+
+一个浮动元素会尽量向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。
+
+浮动元素之后的元素将围绕它。
+
+浮动元素之前的元素将不会受到影响。
+
+如果图像是右浮动，下面的文本流将环绕在它左边：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title>
+<style>
+img 
+{
+	float:right;
+}
+</style>
+</head>
+
+<body>
+<p>在下面的段落中，我们添加了一个 <b>float:right</b> 的图片。导致图片将会浮动在段落的右边。</p>
+<p>
+<img src="logocss.gif" width="95" height="84" />
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+这是一些文本。这是一些文本。这是一些文本。
+</p>
+</body>
+
+</html>
+```
+![](2025-04-27-20-47-06.png)
+
+
+
+
+
+#### 2.19.2 彼此相邻的浮动元素
+如果你把几个浮动的元素放到一起，如果有空间的话，它们将彼此相邻。
+
+在这里，我们对图片廊使用 float 属性：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+.thumbnail 
+{
+	float:left;
+	width:110px;
+	height:90px;
+	margin:5px;
+}
+</style>
+</head>
+
+<body>
+<h3>图片库</h3>
+<p>试着调整窗口,看看当图片没有足够的空间会发生什么。</p>
+<img class="thumbnail" src="/images/klematis_small.jpg" width="107" height="90">
+<img class="thumbnail" src="/images/klematis2_small.jpg" width="107" height="80">
+<img class="thumbnail" src="/images/klematis3_small.jpg" width="116" height="90">
+<img class="thumbnail" src="/images/klematis4_small.jpg" width="120" height="90">
+<img class="thumbnail" src="/images/klematis_small.jpg" width="107" height="90">
+<img class="thumbnail" src="/images/klematis2_small.jpg" width="107" height="80">
+<img class="thumbnail" src="/images/klematis3_small.jpg" width="116" height="90">
+<img class="thumbnail" src="/images/klematis4_small.jpg" width="120" height="90">
+</body>
+</html>
+```
+![](2025-04-27-20-49-39.png)
+
+
+#### 2.19.3 清除浮动 - 使用 clear
+元素浮动之后，周围的元素会重新排列，为了避免这种情况，使用 clear 属性。
+
+clear 属性指定元素两侧不能出现浮动元素。
+
+使用 clear 属性往文本中添加图片廊：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+.thumbnail 
+{
+	float:left;
+	width:110px;
+	height:90px;
+	margin:5px;
+}
+.text_line
+{
+	clear:both;
+	margin-bottom:2px;
+}
+</style>
+</head>
+
+<body>
+<h3>图片库</h3>
+<p>试着调整窗口,看看当图片没有足够的空间会发生什么。.</p>
+<img class="thumbnail" src="/images/klematis_small.jpg" width="107" height="90">
+<img class="thumbnail" src="/images/klematis2_small.jpg" width="107" height="80">
+<img class="thumbnail" src="/images/klematis3_small.jpg" width="116" height="90">
+<img class="thumbnail" src="/images/klematis4_small.jpg" width="120" height="90">
+<h3 class="text_line">第二行</h3>
+<img class="thumbnail" src="/images/klematis_small.jpg" width="107" height="90">
+<img class="thumbnail" src="/images/klematis2_small.jpg" width="107" height="80">
+<img class="thumbnail" src="/images/klematis3_small.jpg" width="116" height="90">
+<img class="thumbnail" src="/images/klematis4_small.jpg" width="120" height="90">
+</body>
+</html>
+```
+![](2025-04-27-21-05-52.png)
+
+
+
+
+
+### 2.20 CSS 布局 - 水平 & 垂直对齐
+![](2025-04-27-21-10-11.png)
+
+#### 2.20.1 元素居中对齐
+要水平居中对齐一个元素(如`<div>`), 可以使用 margin: auto;。
+
+设置到元素的宽度将防止它溢出到容器的边缘。
+
+元素通过指定宽度，并将两边的空外边距平均分配：
+![](2025-04-27-21-11-04.png)
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+.center {
+    margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+</style>
+</head>
+<body>
+
+<h2>元素居中对齐</h2>
+<p>水平居中块级元素 (如 div), 可以使用 margin: auto;</p>
+
+<div class="center">
+  <p><b>注意: </b>使用 margin:auto 无法兼容 IE8, 除非 !DOCTYPE 已经声明。</p>
+</div>
+
+</body>
+</html>
+```
+![](2025-04-27-21-11-40.png)
+
+
+
+#### 2.20.2 文本居中对齐
+如果仅仅是为了文本在元素内居中对齐，可以使用 text-align: center;
+![](2025-04-27-21-14-10.png)
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+.center {
+    text-align: center;
+    border: 3px solid green;
+}
+</style>
+</head>
+<body>
+
+<h2>文本居中对齐</h2>
+
+<div class="center">
+  <p>文本居中对齐。</p>
+</div>
+
+</body>
+</html>
+```
+![](2025-04-27-21-24-38.png)
+
+
+#### 2.20.3 图片居中对齐
+要让图片居中对齐, 可以使用 margin: auto; 并将它放到 块 元素中:
+
+```css
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+img {
+    display: block;
+    margin: 0 auto;
+}
+</style>
+</head>
+<body>
+
+<h2>图片居中对齐</h2>
+<p>要让图片居中对齐, 可以使用 margin: auto; 并将它放到块元素中：</p>
+
+<img src="https://static.jyshare.com/images/mix/paris.jpg" alt="Paris" style="width:40%">
+
+</body>
+</html>
+```
+![](2025-04-27-21-30-41.png)
+
+
+#### 2.20.4 左右对齐 - 使用定位方式
+我们可以使用 `position: absolute`; 属性来对齐元素:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.right {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+</style>
+</head>
+<body>
+
+<h2>右对齐</h2>
+<p>以下实例演示了如何使用 position 来实现右对齐:</p>
+
+<div class="right">
+  <p>菜鸟教程 -- 学的不仅是技术，更是梦想！！</p>
+</div>
+
+</body>
+</html>
+```
+
+![](2025-04-27-21-32-38.png)
+
+注释：绝对定位元素会被从正常流中删除，并且能够交叠元素。
+
+**提示**: 当使用 position 来对齐元素时, 通常 `<body> `元素会设置 margin 和 padding 。 这样可以避免在不同的浏览器中出现可见的差异。
+
+当使用 position 属性时，IE8 以及更早的版本存在一个问题。如果容器元素（在我们的案例中是 `<div class="container">`）设置了指定的宽度，并且省略了 !DOCTYPE 声明，那么 IE8 以及更早的版本会在右侧增加 17px 的外边距。这似乎是为滚动条预留的空间。当使用 position 属性时，请始终设置 !DOCTYPE 声明：
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+body {
+    margin: 0;
+    padding: 0;
+}
+ 
+.container {
+    position: relative;
+    width: 100%;
+}
+ 
+.right {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    background-color: #b0e0e6;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="right">
+	<p><b>注意: </b>当使用浮动属性对齐,总是包括 !DOCTYPE 声明!如果丢失,它将会在 IE 浏览器产生奇怪的结果。</p>
+	</div>
+</div>
+</body>
+</html>
+```
+
+![](2025-04-27-21-41-42.png)
+
+#### 2.20.5 左右对齐 - 使用 float 方式
+我们也可以使用 float 属性来对齐元素:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+.right {
+    float: right;
+    width: 300px;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+</style>
+</head>
+<body>
+
+<h2>右对齐</h2>
+<p>以下实例演示了使用 float 属性来实现右对齐:</p>
+
+<div class="right">
+  <p>我老爹在小时候给我的一些人生建议，我现在还记忆深刻。</p>
+</div>
+
+</body>
+</html>
+```
+![](2025-04-27-21-43-26.png)
+
+
+当像这样对齐元素时，对 <body> 元素的外边距和内边距进行预定义是一个好主意。这样可以避免在不同的浏览器中出现可见的差异。
+
+注意：如果子元素的高度大于父元素，且子元素设置了浮动，那么子元素将溢出，这时候你可以使用 "clearfix(清除浮动)" 来解决该问题。
+
+我们可以在父元素上添加 overflow: auto; 来解决子元素溢出的问题:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>菜鸟教程(runoob.com)</title> 
+<style>
+div {
+    border: 3px solid #4CAF50;
+    padding: 5px;
+}
+
+.img1 {
+    float: right;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+.img2 {
+    float: right;
+}
+</style>
+</head>
+<body>
+
+<p>以下实例图在父元素中溢出，很不美观:</p>
+
+<div>
+<img class="img1" src="pineapple.jpg" alt="Pineapple" width="170" height="170">
+菜鸟教程 - 学的不仅是技术，更是梦想！！！</div>
+
+<p style="clear:right">在父元素上通过添加 clearfix 类，并设置 overflow: auto; 来解决该问题:</p>
+
+<div class="clearfix">
+<img class="img2" src="pineapple.jpg" alt="Pineapple" width="170" height="170">
+菜鸟教程 - 学的不仅是技术，更是梦想！！！</div>
+
+</body>
+</html>
+```
+![](2025-04-27-21-49-24.png)
+
+
+#### 2.20.6垂直居中对齐 - 使用 padding
+CSS 中有很多方式可以实现垂直居中对齐。 一个简单的方式就是头部顶部使用 padding:
+![](2025-04-27-21-50-14.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
